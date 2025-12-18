@@ -1,0 +1,111 @@
+---
+title: Quickstart Guide
+description: Get started quickly with creating and setting up your first documentation space in Ryan.
+---
+
+## Overview
+
+Get up and running with Ryan in minutes. Follow these steps to sign up, create your first documentation space, add a document, and navigate the interface. Ryan provides an intuitive platform to organize project docs, collaborate with teams, and publish polished documentation sites.
+
+<Columns cols={3}>
+  <Card title="Create Space" icon="plus" href="#create-space">
+    Sign up and set up your docs home.
+  </Card>
+  <Card title="Add Document" icon="file-text" href="#add-document">
+    Publish your first page instantly.
+  </Card>
+  <Card title="Navigate" icon="layout" href="#navigate">
+    Master the dashboard and editor.
+  </Card>
+</Columns>
+
+## Sign Up and Create a Space
+
+Begin by creating an account and your first space.
+
+<Steps>
+  <Step title="Visit Ryan" icon="globe">
+    Go to [ryan.dev](https://ryan.dev) and click **Sign Up**.
+  </Step>
+  <Step title="Register" icon="user-plus">
+    Enter your email, create a password, or sign in with GitHub/Google. Verify your email if prompted.
+  </Step>
+  <Step title="Create Space" icon="folder-plus">
+    After login, select **New Space**. Name it (e.g., "My Project Docs"), add a description, and choose the brand color `#3B82F6`.
+  </Step>
+  <Step title="Customize" icon="settings">
+    Set permissions: public, private, or team-only. Save to access your dashboard.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Invite team members early via the **Members** tab to collaborate seamlessly.
+</Callout>
+
+## Add Your First Document
+
+Create content using the visual editor or MDX files.
+
+<Tabs>
+  <Tab title="Visual Editor" icon="edit-3">
+    <Steps>
+      <Step title="New Page">
+        In your space, click **New Document** > **Page**.
+      </Step>
+      <Step title="Edit Content">
+        Use the block-based editor to add text, headings, and embeds. Preview changes live.
+      </Step>
+      <Step title="Publish">
+        Click **Publish**. Your page appears in the navigation sidebar.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="MDX File" icon="code">
+    Upload or create MDX for advanced formatting.
+
+    <CodeGroup tabs="MDX,Upload">
+      ```mdx
+      ---
+      title: My First Page
+      description: Welcome to my docs.
+      ---
+
+      ## Hello World
+
+      This is your first MDX document in Ryan.
+
+      <Callout kind="success">Great job!</Callout>
+      ```
+      ```bash
+      # From dashboard: New Document > MDX File
+      # Paste or upload the MDX content above
+      # Click Publish
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+## Navigate the Interface
+
+Ryan's dashboard centralizes your workflow.
+
+| Section | Purpose | Key Actions |
+|---------|---------|-------------|
+| **Spaces** | Manage doc collections | Create, archive, switch spaces |
+| **Documents** | Edit and organize pages | Drag to reorder, search, duplicate |
+| **Settings** | Configure space | Themes, SEO, custom domains |
+| **Analytics** | Track usage | Views, popular pages |
+
+<Expandable title="Advanced Navigation Tips" default-open="false">
+
+- Use the search bar (`Ctrl+K`) for quick document access.
+- Customize sidebar with pinned pages.
+- Export spaces as static sites via **Export** button.
+
+</Expandable>
+
+<Callout kind="info">
+  Explore the **Templates** gallery for pre-built docs structures like API references or changelogs.
+</Callout>
+
+Your first space is ready! Next, invite collaborators and build out your docs tree. Ryan auto-generates a publishable site at `your-space.ryan.dev`.

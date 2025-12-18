@@ -1,0 +1,146 @@
+---
+title: Configuring Your Space
+description: Learn how to customize and configure your Ryan documentation space for optimal use.
+---
+
+## Overview
+
+Customize your Ryan documentation space to match your brand and team needs. Configure branding with colors and logos, manage user permissions for secure access, and set up integrations for seamless workflows. Follow these guides to tailor your space efficiently.
+
+<Columns cols={3}>
+  <Card title="Branding" icon="palette" href="#branding-and-themes">
+    Apply your logo, colors, and themes.
+  </Card>
+  <Card title="Permissions" icon="shield" href="#user-permissions">
+    Control who accesses what.
+  </Card>
+  <Card title="Integrations" icon="plug" href="#integration-settings">
+    Connect with external tools.
+  </Card>
+</Columns>
+
+## Branding and Themes
+
+Set your brand color to `#3B82F6` and upload a custom logo for a professional look. You access these settings from the space admin panel.
+
+<Steps>
+  <Step title="Access Settings" icon="settings">
+    Navigate to **Space Settings** > **Branding**.
+  </Step>
+  <Step title="Upload Logo" icon="upload">
+    Drag and drop your logo file (PNG or SVG, `<500KB`).
+  </Step>
+  <Step title="Set Colors" icon="palette">
+    Enter your primary color: `#3B82F6`.
+  </Step>
+  <Step title="Apply Theme" icon="save">
+    Select **Light** or **Dark** theme and save changes.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="JSON,YAML">
+```json
+{
+  "theme": {
+    "primaryColor": "#3B82F6",
+    "logoUrl": "https://your-domain.com/logo.png",
+    "mode": "light"
+  }
+}
+```
+```yaml
+theme:
+  primaryColor: "#3B82F6"
+  logoUrl: "https://your-domain.com/logo.png"
+  mode: light
+```
+</CodeGroup>
+
+<Callout kind="tip">
+  Preview changes live before saving to ensure they match your brand guidelines.
+</Callout>
+
+## User Permissions
+
+Define roles to control document editing, viewing, and admin access. Use granular permissions for teams.
+
+| Role       | View Docs | Edit Docs | Manage Users | Admin Space |
+|------------|-----------|-----------|--------------|-------------|
+| Viewer     | ✅        | ❌        | ❌           | ❌          |
+| Editor     | ✅        | ✅        | ❌           | ❌          |
+| Admin      | ✅        | ✅        | ✅           | ✅          |
+
+<Expandable title="Advanced Permission Rules" default-open="false">
+
+Configure custom rules via the API.
+
+```javascript
+// Example: Assign role to user
+await api.assignRole({
+  userId: "user-123",
+  spaceId: "ryan-space-456",
+  role: "editor"
+});
+```
+
+</Expandable>
+
+<Callout kind="alert">
+  Review permissions regularly to prevent unauthorized access.
+</Callout>
+
+## Integration Settings
+
+Connect Ryan to tools like GitHub, Slack, or custom webhooks. Configure via the integrations dashboard.
+
+<Tabs>
+  <Tab title="GitHub" icon="github">
+    Link your repository for automatic doc syncs.
+
+    <Steps>
+      <Step title="Authorize" icon="key">
+        Click **Connect GitHub** and grant permissions.
+      </Step>
+      <Step title="Select Repo" icon="package">
+        Choose `your-org/ryan-docs`.
+      </Step>
+    </Steps>
+
+    ```yaml
+    integrations:
+      github:
+        repo: "your-org/ryan-docs"
+        webhookSecret: "YOUR_WEBHOOK_SECRET"
+    ```
+  </Tab>
+  <Tab title="Slack" icon="message-circle">
+    Send notifications for doc updates.
+
+    ```json
+    {
+      "slack": {
+        "webhookUrl": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK",
+        "channel": "#docs-updates"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Custom API" icon="plug">
+    Use webhooks for custom integrations.
+
+    <CodeGroup tabs="cURL,JavaScript">
+    ```bash
+    curl -X POST https://api.ryan-docs.com/webhooks/endpoint \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -d '{"event": "doc.updated"}'
+    ```
+    ```javascript
+    fetch('https://api.ryan-docs.com/webhooks/endpoint', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer YOUR_API_KEY' },
+      body: JSON.stringify({ event: 'doc.updated' })
+    });
+    ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
